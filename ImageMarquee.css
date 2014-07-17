@@ -1,0 +1,17 @@
+
+div#carousel{
+	margin: 0  auto; 
+	padding: 0px; 
+	 white-space: nowrap;
+	 width:500px;
+	overflow:hidden;
+	background:grey;
+}
+div#carouselinner{
+ position:absolute;	
+
+}
+div#carousel img{
+	position:relative;
+	 margin-left:0px;
+}
