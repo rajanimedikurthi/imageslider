@@ -6,31 +6,40 @@ function log(msg){
 	if(console.log)
 		 console.log(msg);
 }
-
+$(document).ready(function(){
+	startSlider();
+	 $( "#carousel" ).mouseover(stopSlide);
+	 $( "#carousel" ).mouseout(startSlider);
+});
+	 var clrTimeout;
 function startSlider(){
-	 log(document.getElementById("carousel").offsetWidth);
-	 window.setInterval(slide,100);
+	  clrTimeout= window.setInterval(startSlide,100);
+}
+
+function stopSlide(){
+		window.clearInterval(clrTimeout);
 	
 }
-function el(selector){return document.querySelector(selector);}
 function getPos(el, delta){
-	var elLeft = parseInt(el.style.marginLeft) || 0;
+	var elLeft = parseInt(el.css("margin-left")) || 0;
 	if(!delta)
 		return elLeft; 
-		return (el.style.marginLeft = (elLeft+delta)+"px"); 
+	var leftdata=(elLeft+delta)+"px";
+	el.css("margin-left",leftdata );
+		return leftdata; 
 }
 
-function slide(){
-	var firstImg= el("#carousel > img:first-child");
+function startSlide(){
+	var firstImg= $("#carousel > li:first-child");
 	if(firstImg){
 		var newp=getPos(firstImg, -10);
 		log(newp);
-			if(parseInt(newp) + firstImg.offsetWidth<=0 )
+			if(parseInt(newp) + firstImg.outerWidth()<=0 )
 		{
-			var paNode= firstImg.parentNode;
-			paNode.removeChild(firstImg);
-			firstImg.style.marginLeft = 0;
-			paNode.appendChild(firstImg);
+			var paNode= firstImg.parent();
+			firstImg.remove();
+			firstImg.css("margin-left", 0);
+			paNode.append(firstImg);
 		}
 	
 	}

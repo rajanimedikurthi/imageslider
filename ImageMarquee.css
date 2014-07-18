@@ -1,5 +1,5 @@
 
-div#carousel{
+ul#carousel{
 	margin: 0  auto; 
 	padding: 0px; 
 	 white-space: nowrap;
@@ -11,7 +11,8 @@ div#carouselinner{
  position:absolute;	
 
 }
-div#carousel img{
-	position:relative;
+ul#carousel li{
 	 margin-left:0px;
+	 list-style-type:none;
+	 display:inline-block;
 }
